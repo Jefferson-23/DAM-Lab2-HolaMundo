@@ -1,20 +1,60 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import React, { useState } from 'react';
+import { Text, View, StyleSheet, Image, TouchableOpacity, Alert, TextInput } from 'react-native';
+//import image from './assets/urahara.png';
 
-export default function App() {
+const App = () => {
+  const [inputText, setInputText] = useState('');
   return (
     <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
+      <Text style={styles.title}> Hola mundo!</Text>
+      <Image
+        source={{ uri: 'https://picsum.photos/200/300' }}
+        style={styles.Image}
+      />
+      <TouchableOpacity
+        onPress={() => Alert.alert('Holaaa!')}
+        style={styles.button}
+      >
+        <Text style={styles.buttonText}>Presionar Aqui!</Text>
+      </TouchableOpacity>
+      <TextInput
+        style={styles.input}
+        value={inputText}
+        onChangeText={text => setInputText(text)}
+        placeholder="Escribe algo..."
+      />
+
     </View>
   );
-}
+};
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
     justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: "#292929"
   },
+  title: { fontSize: 30, color: '#fff' },
+  Image: { height: 200, width: 200, borderRadius: 90 },
+  button: {
+    backgroundColor: 'blue',
+    padding: 7,
+    marginTop: 10,
+  },
+  buttonText: {
+    color: '#fff',
+    fontSize: 20
+  },
+  input: {
+    height: 40,
+    width: 300,
+    borderColor: 'gray',
+    borderWidth: 1,
+    paddingHorizontal: 10,
+    marginTop: 20,
+    color: '#ff0000',
+    backgroundColor: '#fff',
+  }
 });
+export default App;
